@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style/style.css" />
+  <link rel="stylesheet" href="./style/owfont-regular.css">
+  <title>Momentum</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <i class="weather-icon owf"></i>
+      <div class="meteo">
+        <div class="current__temperature"></div>
+        <div class="current__humidity"></div>
+        <div class="current__wind"></div>
+        <div class="weather-description"></div>
+      </div>
+    </div>
+    <div class="user__city" contenteditable="true"></div>
+    <div class="current__date"></div>
+    <time class="current__time"></time>
+    <h1>
+      <span class="greeting"></span>
+      <span class="user__name" contenteditable="true"></span>
+    </h1>
+    <h2>What are you going to do today?</h2>
+    <h2 class="focus" contenteditable="true"></h2>
+    <figure class="quote">
+      <blockquote></blockquote>
+      <figcaption></figcaption>
+    </figure>
+    <div class="buttons">
+      <button class="button__image">Change image</button>
+      <button class="button__quote">Change quote</button>
+    </div>
+  </div>
+  <script src="./javascript/main.js"></script>
+  <script src="./javascript/getData.js"></script>
+  <script src="./javascript/localStorageData.js"></script>
+</body>
+
+</html>
