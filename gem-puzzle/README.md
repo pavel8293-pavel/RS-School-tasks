@@ -1,4 +1,4 @@
-#Gem puzzle
+# Gem puzzle
 ## pavel8293-pavel-JS2020Q3
 
 Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/gem-pazzle/codejam-the-gem-puzzle.md  
