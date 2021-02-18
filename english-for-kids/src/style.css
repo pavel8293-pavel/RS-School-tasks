@@ -1,0 +1,373 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lobster', Arial,cursive;
+    background: linear-gradient(to bottom, #f3d704, #f68300);
+    background-repeat: no-repeat;
+}
+
+header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 45px;
+    color:#3b3a3a;
+}
+
+#nav-container {
+    z-index: 10;
+}
+
+.toggle-icon {
+	display: block;
+	transition: 0.6s;
+	cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 4em;
+    height: 0.3em;
+    margin: 0.7em;
+    border-right: 3em solid #30a4f1;
+    border-left: 1em solid #fbff00;
+    transition-duration: 0.6s;
+}
+.bar:nth-of-type(1) {
+	transition: 0.3s;
+}
+.bar:nth-of-type(2) {
+	transform: rotate(-180deg);
+}
+
+.pushed,
+.toggle-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.pushed .bar:nth-of-type(1) {
+	opacity: 0;
+}
+
+.pushed .bar:nth-of-type(2) {
+	margin-left: 1.4em;
+	transform: rotate(-137deg) translateY(-1.5em);
+}
+
+.pushed .bar:nth-of-type(3) {
+	margin-left: 0.5em;
+	transform: rotate(-42deg);
+}
+
+.burger-menu-visible{
+    position: absolute;
+    top: 0;
+    left: -300px;
+    height: 100%;
+    width: 320px;
+    background-color: rgb(126, 138, 245);
+    opacity: 0.95;
+    visibility:visible;
+    transition:1s;
+    transform: translate(300px);
+}
+
+.hidden-container{
+    left:-100%;
+    transition: all 0.6s ease 0s;
+
+}
+.hidden-block{
+    transition: all 0.6s ease 0s;
+}
+
+.menu-list{
+    display:block
+}
+.menu-list-hidden{
+    display:none
+}
+
+.empty-screen {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width:calc(100% - 320px);
+    height: 100%;
+    background-color: rgb(158, 207, 240);
+    opacity: 0.3;
+    transform: translate(300px);
+    visibility:visible;
+    transition:1s
+}
+
+.hidden-class {
+    display:none;
+} 
+
+ul {
+    padding-top:100px;
+}
+
+li {
+    text-align: center;
+    height: 40px;
+    font-size: 35px;
+    font-family: 'Amatic SC',Arial, cursive;
+    cursor:pointer;
+}
+
+li:hover {
+    background: antiquewhite;
+}
+
+.main-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    min-height: calc(100vh - 140px);
+}
+
+.topics-field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    perspective: 1300px;
+}
+
+
+.card {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    cursor: pointer;
+    transition: 1s;
+    transform-style: preserve-3d;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 50px;
+}
+
+.front-side,
+.back-side {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    background-color: rgb(245, 245, 178);
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+}
+
+.front-side:hover {
+    box-shadow: 0px 0px 32px 8px rgb(5, 68, 241);
+}
+
+.card.is-flipped {
+    transform: rotateY(180deg);
+  }
+.back-side {
+    transform: rotateY(180deg);
+}
+
+.reverse-button {
+    position: absolute;
+    bottom: 10px;
+    right: 125px;
+    display: block;
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    background: radial-gradient(#f8f7eb, #f6e75e);
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+
+.disabled-area {
+    cursor: none;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+
+.score-table{
+    max-height: 50px;
+    max-width: 1200px;
+    overflow: hidden;
+}
+.score-table img{
+    height: 50px;
+}
+
+.switch-btn {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    height: 36px;
+    font-family: 'Amatic SC',Arial, cursive;
+    font-size: 26px;
+    text-align: center;
+    letter-spacing: 0.15em;
+    content: "";
+    border-radius: 25px;
+    background: #e6ecac;
+    border: none;
+    z-index: 0;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+.switch-btn::after {
+    content: '';
+    height: 50px;
+    width: 50px;
+    border-radius: 23px;
+    background: #f38406;
+    top: -8px;
+    left: 0px;
+    transition-duration: 300ms;
+    position: absolute;
+    z-index: 1;
+}
+
+.switch-on {
+    background: #30a4f1;
+}
+
+.switch-on::after {
+    left: 120px;
+}
+.start-game {
+    display: block;
+    height: 50px;
+    width: 150px;
+    margin: 10px auto;
+    font-family: 'Amatic SC',Arial, cursive;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 20px;
+    background: #e6ecac;
+    outline: none;
+}
+
+.start-game:hover{
+    box-shadow: 0px 0px 32px 8px rgb(5, 68, 241);
+}
+
+.repeat-word{
+    background-color: #30a4f1;
+}
+
+.repeat-word:hover{
+    box-shadow: 0px 0px 32px 8px rgb(5, 68, 241);
+}
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+    align-items: center;
+    background-color: rgba(255, 217, 0, 0.513);
+    font-size: 25px;
+}
+
+.table-topic {
+    background: #e6ecac;
+}
+
+table {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100vw;
+    padding: 30px;
+    font-family: arial;
+    text-align: center;
+    background: white;
+    border-spacing: 0;
+    z-index: 10;
+}
+
+tr {
+    height: 20px;
+}
+
+td {
+    max-width: 80px;
+}
+.close-btn{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 50px;
+    height: 26px;
+    border-radius: 5px;
+    background: #f38406;
+    outline: none;
+    cursor: pointer;
+}
+
+.reset-button {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 50px;
+    height: 26px;
+    border-radius: 5px;
+    background: #f38406;
+    outline: none;
+    cursor: pointer;
+}
+
+a:link,
+a:visited,
+a:active {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Amatic SC',Arial, cursive;
+}
+
+.final-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width:100vw;
+    height:100vh;
+}
+
+@media only screen and (max-width: 550px) {
+h1 {
+   display: none;
+}
+
+.topics-field {
+    perspective: 3000px;
+}
+}
