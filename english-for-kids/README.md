@@ -9,3 +9,5 @@ Advanced scope 100%
 Hacker scope 60%  
 
 Private repository for @pavel8293-pavel  
+
+Rolling Scopes School
