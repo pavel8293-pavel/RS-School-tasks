@@ -1,6 +1,9 @@
-# ready-projects
+# Calculator
+## pavel8293-pavel-JS2020Q3
 
-## Task 1. Calculator
-- [описание задания](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/ready-projects/calculator.md)
-- [видео](https://youtu.be/VHGaBc9OcXU)
-- [демо](https://irinainina.github.io/ready-projects/calculator-ru/)
+Task: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/ready-projects/calculator.md  
+Deploy: https://pavel8293-pavel.github.io/RS-School-tasks/calculator/
+
+Private repository for @pavel8293-pavel
+
+Rolling Scopes School
