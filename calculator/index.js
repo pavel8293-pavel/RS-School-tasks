@@ -4,21 +4,17 @@ class EventEmitter {
   }
 
   on(eventName, listener) {
-
     (this._events[eventName] || (this._events[eventName] = [])).push(listener);
     return this;
   }
-  emit(eventName, arg) {
 
+  emit(eventName, arg) {
     (this._events[eventName] || []).slice().forEach(lsn => {
-      console.log(eventName, arg, lsn)
-      console.log(this._events)
       lsn(arg)
     });
   }
 }
-
-class ListModel extends EventEmitter {
+class Model extends EventEmitter {
   constructor(items) {
     super();
     this._items = items || [];
@@ -34,13 +30,15 @@ class ListModel extends EventEmitter {
   deleteNumber() {
     this._items = []
     this._savedNumber = 0
-    this.emit('numberDeleted');
+    this._memoryPendingOperation = ''
+    this.emit('numberEntered')
+    this.emit('numberModified');
   }
 
   sqrtNumber() {
     this._savedNumber = Number(this._items.join('')) ** 0.5
     this._items = this._savedNumber.toString().split('')
-    this.emit('numberModified', this._items);
+    this.emit('numberModified');
   }
 
   decimalNumber() {
@@ -53,14 +51,16 @@ class ListModel extends EventEmitter {
     if (!this._items.includes('.')) {
       this._items.push('.')
     }
-    this.emit('numberModified', this._items);
+    this.emit('numberModified');
   }
 
   minusNumber() {
     if (this._items[0] !== '-') {
       this._items.unshift('-')
+    } else {
+      this._items.shift()
     }
-    this.emit('numberModified', this._items);
+    this.emit('numberModified');
   }
 
   addItem(item) {
@@ -74,47 +74,45 @@ class ListModel extends EventEmitter {
 
   computeNumber(value) {
     this._isNumberSaved = true
-    console.log(this._isNumberSaved)
+    const previous = this._savedNumber
+    const current = Number(this._items.join(''))
     switch (this._memoryPendingOperation) {
       case "+":
-        this._savedNumber = (this._savedNumber * 10 + Number(this._items.join('')) * 10) / 10
+        this._savedNumber = parseFloat((previous + current).toFixed(10))
         break;
       case "-":
-        this._savedNumber = (this._savedNumber * 10 - Number(this._items.join('')) * 10) / 10
+        this._savedNumber = parseFloat((previous - current).toFixed(10))
         break;
       case "*":
-        this._savedNumber = (this._savedNumber * 10 * Number(this._items.join('')) * 10) / 100
+        this._savedNumber = parseFloat((previous * current).toFixed(10))
         break;
       case "/":
-        this._savedNumber = (this._savedNumber * 10 / Number(this._items.join('')) * 10) / 100
+        this._savedNumber = parseFloat((previous / current).toFixed(10))
         break;
       case "^":
-        this._savedNumber = this._savedNumber ** Number(this._items.join(''))
+        this._savedNumber = parseFloat((previous ** current).toFixed(10))
         break;
       default:
-        this._savedNumber = Number(this._items.join(''))
+        this._savedNumber = current
     }
-    this._items = this._savedNumber.toString().split('')
-    this._memoryPendingOperation = value
-    this.emit('numberComputed', this._items);
-  }
 
+    this._memoryPendingOperation = value
+    this._items = this._savedNumber.toString().split('')
+    this.emit('numberModified');
+    this.emit('numberEntered')
+
+  }
 }
-class ListView extends EventEmitter {
+class View extends EventEmitter {
   constructor(model, elements) {
     super();
     this._model = model;
     this._elements = elements;
-    console.log(elements)
-    // attach model listeners
 
-    model.on('itemAdded', () => this.rebuildList())
-      .on('itemRemoved', () => this.rebuildList())
-      .on('numberComputed', () => this.rebuildList())
-      .on('numberDeleted', () => this.rebuildList())
-      .on('numberModified', () => this.rebuildList());
+    model.on('itemAdded', () => this.rebuildDisplay())
+      .on('numberModified', () => this.rebuildDisplay())
+      .on('numberEntered', () => this.refreshAdditionalDisplay())
 
-    // attach listeners to HTML controls
     elements.numberButton.forEach((pressedNumber) => {
       pressedNumber.addEventListener('click', () => this.emit('numberButtonClicked', pressedNumber.innerHTML))
     });
@@ -128,10 +126,10 @@ class ListView extends EventEmitter {
   }
 
   show() {
-    this.rebuildList();
+    this.rebuildDisplay();
   }
 
-  rebuildList() {
+  rebuildDisplay() {
     const list = this._elements.list;
     list.value = this._model.getItems().join('')
     if (!list.value) {
@@ -140,8 +138,17 @@ class ListView extends EventEmitter {
     return list.value
   }
 
+  refreshAdditionalDisplay() {
+    const previousOperation = this._elements.previousOperationList
+    if (this._model._memoryPendingOperation !== "=" && this._model._savedNumber) {
+      previousOperation.value = `${this._model._savedNumber} ${this._model._memoryPendingOperation}`
+    } else {
+      previousOperation.value = ''
+    }
+    return previousOperation.value
+  }
 }
-class ListController {
+class Controller {
   constructor(model, view) {
     this._model = model;
     this._view = view;
@@ -155,9 +162,7 @@ class ListController {
   }
 
   computeNumber(operand) {
-    if (operand) {
-      this._model.computeNumber(operand);
-    }
+    this._model.computeNumber(operand);
   }
 
   deleteNumber() {
@@ -177,16 +182,15 @@ class ListController {
   }
 
   addItem(item) {
-    if (item) {
-      this._model.addItem(item);
-    }
+    this._model.addItem(item);
   }
-
 }
+
 window.addEventListener('load', () => {
-  const model = new ListModel([]),
-    view = new ListView(model, {
-      'list': document.getElementById('display'),
+  const model = new Model([]),
+    view = new View(model, {
+      'previousOperationList': document.getElementById('previous-number'),
+      'list': document.getElementById('current-number'),
       'numberButton': document.querySelectorAll('[data-number]'),
       'operationButton': document.querySelectorAll('[data-operation]'),
       'clearButton': document.getElementById('c'),
@@ -194,7 +198,6 @@ window.addEventListener('load', () => {
       'minusButton': document.getElementById('x'),
       'sqrtButton': document.getElementById('sqrt'),
     }),
-    controller = new ListController(model, view);
-
+    controller = new Controller(model, view);
   view.show();
 });

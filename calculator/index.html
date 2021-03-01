@@ -9,98 +9,32 @@
 </head>
 
 <body>
-  <main class="main">
-    <div class="calc">
-      <div class="calc-display">
-        <input disabled type="text" id="display" value="0" name=""
-          class="calc-display-input">
-      </div>
-      <div class="calc-buttons">
-        <table class="calc-table">
-          <tr class="calc-buttons-row">
-            <td colspan="4">
-              <button type="button" class="info">- Для ввода отрицательного числа:<br />Вводим число => нажимаем
-                -Х;<br />
-                - Для извлечения кв. корня:<br /> 1.Вводим число => нажимаем √;<br /></button>
-            </td>
-          </tr>
-          <tr class="calc-buttons-row">
-
-            <td>
-              <button type="button" id="c" class="btn btn-hover-red">c</button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-hover-orange" data-operation>/</button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-hover-orange" data-operation>*</button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-hover-orange" id="x">-x</button>
-            </td>
-          </tr>
-          <tr class="calc-buttons-row">
-            <td>
-              <button type="button" data-number class="btn-hover-green btn">7</button>
-            </td>
-            <td>
-              <button type="button" data-number class="btn-hover-green btn">8</button>
-            </td>
-            <td>
-              <button type="button" data-number class="btn-hover-green btn">9</button>
-            </td>
-            <td>
-              <button type="button" class=" btn btn-hover-orange" data-operation>-</button>
-            </td>
-          </tr>
-          <tr class="calc-buttons-row">
-            <td>
-              <button type="button" data-number class=" btn-hover-green btn">4</button>
-            </td>
-            <td>
-              <button type="button" data-number class=" btn-hover-green btn">5</button>
-            </td>
-            <td>
-              <button type="button" data-number class=" btn-hover-green btn">6</button>
-            </td>
-            <td>
-              <button type="button" class=" btn btn-hover-orange" data-operation>+</button>
-            </td>
-          </tr>
-          <tr class="calc-buttons-row">
-            <td>
-              <button type="button" data-number class=" btn-hover-green btn">1</button>
-            </td>
-            <td>
-              <button type="button" data-number class=" btn-hover-green btn">2</button>
-            </td>
-            <td>
-              <button type="button" data-number class=" btn-hover-green btn">3</button>
-            </td>
-            <td>
-              <button type="button" class="btn  btn-hover-orange" id="decimal">.</button>
-            </td>
-          </tr>
-          <tr class="calc-buttons-row">
-            <td>
-              <button type="button" data-number class="btn-hover-green btn">0</button>
-            </td>
-
-            <td>
-              <button type="button" data-operation class=" btn-hover-orange btn">^</button>
-            </td>
-            <td>
-              <button type="button" id="sqrt" class=" btn-hover-orange btn">√</button>
-            </td>
-
-            <td>
-              <button type="button" data-operation class="btn  btn-hover-orange" id="result">=</button>
-            </td>
-          </tr>
-        </table>
-      </div>
+  <div class="calculator-grid">
+    <div class="output">
+      <input disabled type="text" id="previous-number" class="calc-display-output">
+      <input disabled type="text" id="current-number" value="0" class="calc-display-input">
     </div>
-  </main>
+    <button type="button" id="c" class="btn btn-hover-red">c</button>
+    <button type="button" class="btn btn-hover-orange" data-operation>/</button>
+    <button type="button" class="btn btn-hover-orange" data-operation>*</button>
+    <button type="button" class="btn btn-hover-orange" id="x">-x</button>
+    <button type="button" data-number class="btn-hover-green btn">7</button>
+    <button type="button" data-number class="btn-hover-green btn">8</button>
+    <button type="button" data-number class="btn-hover-green btn">9</button>
+    <button type="button" class=" btn btn-hover-orange" data-operation>-</button>
+    <button type="button" data-number class=" btn-hover-green btn">4</button>
+    <button type="button" data-number class=" btn-hover-green btn">5</button>
+    <button type="button" data-number class=" btn-hover-green btn">6</button>
+    <button type="button" class=" btn btn-hover-orange" data-operation>+</button>
+    <button type="button" data-number class=" btn-hover-green btn">1</button>
+    <button type="button" data-number class=" btn-hover-green btn">2</button>
+    <button type="button" data-number class=" btn-hover-green btn">3</button>
+    <button type="button" class="btn  btn-hover-orange" id="decimal">.</button>
+    <button type="button" data-number class="btn-hover-green btn">0</button>
+    <button type="button" data-operation class=" btn-hover-orange btn">^</button>
+    <button type="button" id="sqrt" class=" btn-hover-orange btn">√</button>
+    <button type="button" data-operation class="btn  btn-hover-orange" id="result">=</button>
+  </div>
   <script src="index.js">
   </script>
 </body>
