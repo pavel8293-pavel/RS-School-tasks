@@ -16,15 +16,47 @@ body {
   align-content: center;
   min-height: 100vh;
   grid-template-columns: repeat(4, 100px);
-  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+  grid-template-rows: repeat(6, 100px);
+  grid-template-areas:
+  "output output output output"
+  "modify-buttons modify-buttons modify-buttons modify-buttons"
+  "number-buttons number-buttons number-buttons compute-buttons"
+  "number-buttons number-buttons number-buttons compute-buttons"
+  "number-buttons number-buttons number-buttons compute-buttons"
+  "number-buttons number-buttons  number-buttons compute-buttons"
 }
 
-.calculator-grid > button {
+.number-buttons {
+  display: grid;
+  grid-area: number-buttons;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.compute-buttons {
+  display: grid;
+  grid-area: compute-buttons;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+}
+
+.modify-buttons {
+  display: grid;
+  grid-area: modify-buttons;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+button {
   cursor: pointer;
   font-size: 2rem;
   border: 1px solid white;
   outline: none;
   background-color: rgb(233, 250, 3);
+}
+
+.zero-button {
+  width: 300%
 }
 
 .calculator-grid > button:hover {
