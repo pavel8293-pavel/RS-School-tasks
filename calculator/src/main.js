@@ -1,6 +1,6 @@
-import View from './Viewer.js';
-import Controller from './Controller.js';
-import Model from './Model.js';
+import View from './Viewer';
+import Controller from './Controller';
+import Model from './Model';
 
 window.addEventListener('load', () => {
   const model = new Model();

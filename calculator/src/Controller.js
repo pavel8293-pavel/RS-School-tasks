@@ -3,42 +3,42 @@ export default class Controller {
     this.model = model;
     this.view = view;
 
-    view.on('numberButtonClicked', (value) => this.addItem(value));
-    view.on('modifyButtonClicked', (value) => this.chooseModificator(value));
-    view.on('computeButtonClicked', (value) => this.chooseComputeOperation(value));
-    model.on('numberAdded', (value) => view.renderMainDisplay(value));
-    model.on('renderMainDisplay', (value) => view.renderMainDisplay(value));
-    model.on('renderMemoryDisplay', (value) => view.renderMemoryDisplay(value));
+    view.on('numberButtonClicked', (number) => this.add(number));
+    view.on('modifyButtonClicked', (key) => this.chooseModificator(key));
+    view.on('computeButtonClicked', (key) => this.compute(key));
+    model.on('number added', (number) => view.renderMainDisplay(number));
+    model.on('number changed', (numbers) => view.renderMainDisplay(numbers));
+    model.on('memory changed', (value) => view.renderMemoryDisplay(value));
   }
 
-  addItem(item) {
-    this.model.addItem(item);
+  add(number) {
+    this.model.add(number);
   }
 
-  chooseModificator(value) {
-    switch (value) {
+  chooseModificator(buttonValue) {
+    switch (buttonValue) {
       case 'C':
-        this.model.resetMainDisplay();
+        this.model.reset();
         break;
       case '-X':
-        this.model.minusNumber();
+        this.model.minus();
         break;
       case '.':
-        this.model.decimalNumber();
+        this.model.decimal();
         break;
       case '√':
-        this.model.sqrtNumber();
+        this.model.sqrt();
         break;
       default:
-        this.view.renderMainDisplay();
+        throw new Error('Unexpected button value');
     }
   }
 
-  chooseComputeOperation(value) {
-    this.model.chooseComputeOperation(value);
+  compute(buttonValue) {
+    this.model.compute(buttonValue);
   }
 
   run() {
-    this.view.show();
+    this.model.reset();
   }
 }
