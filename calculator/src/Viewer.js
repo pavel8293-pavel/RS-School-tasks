@@ -1,4 +1,4 @@
-import EventEmitter from './Emitter.js';
+import EventEmitter from './Emitter';
 
 export default class View extends EventEmitter {
   constructor(elements) {
@@ -17,26 +17,13 @@ export default class View extends EventEmitter {
 
   renderMainDisplay(numbers) {
     const { mainDisplay } = this.elements;
-    if (!numbers) {
-      mainDisplay.value = '0';
-    } else {
-      mainDisplay.value = numbers.join('');
-    }
+    mainDisplay.value = numbers.join('');
     return mainDisplay.value;
   }
 
-  renderMemoryDisplay(numbers) {
+  renderMemoryDisplay(pendings) {
     const { memoryDisplay } = this.elements;
-    if (!numbers) {
-      memoryDisplay.value = '0';
-    } else {
-      memoryDisplay.value = numbers.join(' ');
-    }
+    memoryDisplay.value = pendings.join(' ');
     return memoryDisplay.value;
-  }
-
-  show() {
-    this.renderMainDisplay();
-    this.renderMemoryDisplay();
   }
 }
