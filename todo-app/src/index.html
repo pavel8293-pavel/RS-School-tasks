@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +9,26 @@
     <script defer type="module" src="./main.js">  </script>
     <title>TODO</title>
 </head>
+
 <body>
-    <div class="wrapper">
-        
+    <div class="todo-app">
+        <div class="add-todo">
+            <label for="add-item">What do you have to do:</label>
+            <input type="text" name="new-todo" id="add-item" placeholder="Add item to do" autofocus>
+            <input type="submit" id="add-button" value="Add">
+        </div>
+        <div class="todo-list">
+            <table class="todo-table">
+                <tr>
+                    <th>№</th>
+                    <th>Things to do</th>
+                    <th>status</th>
+                    <th>date</th>
+                </tr>
+            </table>
+        </div>
+
     </div>
 </body>
+
 </html>
