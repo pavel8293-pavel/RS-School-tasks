@@ -7,7 +7,10 @@ window.addEventListener('load', () => {
   const view = new View({
     inputField : document.getElementById('add-item'),
     addButton : document.getElementById('add-button'),
-   // todoList : document.querySelector('.todo-list'),
+    todoTable : document.querySelector('.todo-table'),
+    deleteBtn : document.getElementById('delete'),
+    completeBtn : document.getElementById('complete'),
+    deleteCopmpletedBtn : document.getElementById('delete-completed'),
   });
   const controller = new Controller(model, view);
   controller.run();
