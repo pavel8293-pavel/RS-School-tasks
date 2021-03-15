@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <script defer type="module" src="./main.js">  </script>
+    <title>TODO</title>
+</head>
+
+<body>
+    <div class="todo-app">
+        <div class="add-todo">
+            <label for="add-item">What do you have to do:</label>
+            <input type="text" name="new-todo" id="add-item" placeholder="Add item to do" autofocus>
+            <input type="button" id="add-button" value="Add">
+        </div>
+        <div class="todo-list">
+            <table class="todo-table">
+                <tr class="table-head">
+                    <th>№</th>
+                    <th><input type ="checkbox"  name="select-all" id="select-all"></th>
+                    <th>Things to do</th>
+                    <th id="Status">Status</th>
+                    <th>Edit</th>
+                    <th id="Date">Date</th>
+                </tr>
+            </table>
+            <div class="navigation">
+                <input type="button" id="delete" value="delete">
+                <input type="button" id="delete-completed" value="delete completed">
+                <input type="button" id="complete" value="complete">
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
