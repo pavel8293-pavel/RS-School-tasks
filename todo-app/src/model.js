@@ -34,8 +34,7 @@ export default class Model extends EventEmitter {
     }
 
     process(event) {
-
-        switch (event.value) {
+        switch (event.id) {
             case ('Edit'):
                 this.edit(event)
                 break;
