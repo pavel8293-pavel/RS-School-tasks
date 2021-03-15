@@ -15,16 +15,17 @@
         <div class="add-todo">
             <label for="add-item">What do you have to do:</label>
             <input type="text" name="new-todo" id="add-item" placeholder="Add item to do" autofocus>
-            <input type="submit" id="add-button" value="Add">
+            <input type="button" id="add-button" value="Add">
         </div>
         <div class="todo-list">
             <table class="todo-table">
-                <tr>
+                <tr class="table-head">
                     <th>№</th>
-                    <th><input type ="checkbox"name="select-all" id="select-all"></th>
+                    <th><input type ="checkbox" value="select-all" name="select-all" id="select-all"></th>
                     <th>Things to do</th>
-                    <th>status</th>
-                    <th>date</th>
+                    <th value="Status">Status</th>
+                    <th>Edit</th>
+                    <th value="Date">Date</th>
                 </tr>
             </table>
             <div class="navigation">

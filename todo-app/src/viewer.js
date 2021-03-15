@@ -34,11 +34,10 @@ export default class View extends EventEmitter {
         todos.forEach((todo,idx)=> {
             const row = new DOMelement('tr', 'table.todo-table', 'table-item', todo.id, 
             `<td>${idx+1}</td><input type ="checkbox">
-            </input><td><span  contenteditable ="false">${todo.text}</span></td>
+            </input><td><span class="editable" contenteditable ="false">${todo.text}</span></td>
             <td>${todo.status}</td>
-            <td><input type="button" class="edit-button" value="Edit"></td>`)
+            <td><input type="button" class="edit-button" value="Edit"></td>
+            <td>${todo.published}</td>`)
         });
     }
-
-
 }

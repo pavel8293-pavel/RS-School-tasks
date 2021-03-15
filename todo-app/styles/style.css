@@ -1,0 +1,68 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.todo-table {
+    border-spacing: 0;
+    margin: 0 auto;
+    width:50%
+}
+
+tr:nth-child(odd) {
+    background-color: #bfe1f5d5;
+}
+
+tr:nth-child(even) {
+    background-color: #f1f1e691;
+}
+
+td {
+    padding: 0px 20px 0px 20px;
+}
+
+th {
+    height: 40px;
+    background-color: #67aae9;
+}
+
+tr {
+    height: 25px;
+}
+
+tr:first-child {
+    text-align: start;
+}
+
+.add-todo {
+    display: flex;
+    justify-content: center;    
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+}
+
+input[type=button] {
+    background: rgba(250, 238, 78, 0.575);
+    padding: 0px 20px 0px 20px;
+    width: 160px;
+    height: 20px;
+}
+
+input[type=text] {
+    background: rgba(173, 173, 170, 0.376);
+}
+
+input[type=checkbox] {
+    vertical-align: -webkit-baseline-middle;
+
+}
